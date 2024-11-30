@@ -1,4 +1,4 @@
-from langchain.prompts import Prompt
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 PROMPT_TEMPLATE = """
 Ты ассистент, отвечающий на вопросы людей. \\
@@ -10,4 +10,9 @@ PROMPT_TEMPLATE = """
 Ответ:
 """
 
-prompt = Prompt.from_template(PROMPT_TEMPLATE)
+prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", "Answer in Russian."),
+        MessagesPlaceholder(variable_name="messages"),
+    ]
+)

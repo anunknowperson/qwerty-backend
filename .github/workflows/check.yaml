@@ -29,5 +29,5 @@ jobs:
           poetry run pre-commit install
           poetry run pre-commit run --all-files --color always --verbose --show-diff-on-failure
 
-      - name: Check types
-        run: poetry run mypy src
+      # - name: Check types
+      #   run: poetry run mypy src

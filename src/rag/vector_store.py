@@ -1,9 +1,13 @@
 import logging
 import os
+from pathlib import Path
 
 import pandas as pd
 from langchain_chroma import Chroma
+from langchain_core.documents import Document
 from langchain_ollama import OllamaEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from tqdm import tqdm
 
 vector_store = Chroma(
     embedding_function=OllamaEmbeddings(
@@ -18,8 +22,8 @@ def load_contacts():
     contacts = df.apply(
         lambda row: (
             f"{row["name"]} район,"
-            + f" {row["category"]}, {row["name.1"]},"
-            + f" список телефонных номеров: {row["phones"][1:-1].replace(",", ", ")}\n\n"
+            f" {row["category"]}, {row["name.1"]},"
+            f" список телефонных номеров: {row["phones"][1:-1].replace(",", ", ")}\n\n"
         ),
         axis=1,
     )
@@ -32,3 +36,16 @@ def load_contacts():
 
 
 load_contacts()
+
+
+def load_knowledge_base_data():
+    data_dir = Path("./knowledge_base")
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    for article_path in tqdm(data_dir.iterdir()):
+        with open(article_path) as f:
+            data = Document(f.read(), link="https://gu.spb.ru/knowledge-base/")
+            splitted = splitter.split_documents([data])
+            _ = vector_store.add_documents(splitted)
+
+
+load_knowledge_base_data()

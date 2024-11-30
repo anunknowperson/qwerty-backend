@@ -11,6 +11,11 @@ package-mode = false
 python = "^3.12"
 langchain-text-splitters = "^0.3.2"
 langchain-community = "^0.3.8"
+langchain-core = "^0.3.21"
+langchain-openai = "^0.2.10"
+langchain-chroma = "^0.1.4"
+langgraph = "^0.2.53"
+langchain-ollama = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"

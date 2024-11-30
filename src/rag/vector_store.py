@@ -48,4 +48,4 @@ def load_knowledge_base_data():
             _ = vector_store.add_documents(splitted)
 
 
-load_knowledge_base_data()
+#load_knowledge_base_data()

@@ -12,5 +12,5 @@ model = ChatOpenAI(
     streaming=True,
     base_url=os.environ.get("MODEL_API_BASE"),
     temperature=0.1,
-    extra_body={"min_p": 0.05},
+    extra_body={"min_p": 0.1},
 )

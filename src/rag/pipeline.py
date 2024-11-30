@@ -15,34 +15,30 @@ class State(MessagesState):
 
 
 def retrieve(state: State):
-    print("Retriever")
+
     retrieved_docs = vector_store.similarity_search(state["messages"][-1].content, k=10)
     logging.info(f"Retrieved {len(retrieved_docs)} documents")
     logging.info("".join(f"{i}: {doc.page_content}\n" for i, doc in enumerate(retrieved_docs)))
 
-    print("End Retriever")
     return {"context": retrieved_docs}
 
 
 def generate(state: State):
-    print("Generator")
 
     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
     system_message_content = (
-        "You are an assistant for question-answering tasks. "
-        "Use the following pieces of retrieved context to answer "
-        "the question. If you don't know the answer, say that you "
-        "don't know. Use no more than a single paragraph, "
-        "answer concise."
+        "Ты - Сайга, умный и полезный ассистент. "
+        "Используй следующий контекст, который может тебе помочь с ответом на вопрос. "
+        "Если ты не знаешь ответ, то скажи что ответ тебе не известен."
         "\n\n"
         f"{docs_content}"
     )
     conversation_messages = [
         message for message in state["messages"] if message.type in ("human", "system") or message.type == "ai"
     ]
+
     prompt = [SystemMessage(system_message_content), *conversation_messages]
     response = model.invoke(prompt)
-    print("End Generator")
 
     return {"answer": response.content}
 
@@ -53,5 +49,5 @@ graph = graph_builder.compile()
 
 
 def stream_model_response(messages: list[BaseMessage]):
-    for step, *_ in graph.stream({"messages": messages}, stream_mode="messages"):
+    for step, *_ in graph.stream(messages, stream_mode="messages"):
         yield step.content

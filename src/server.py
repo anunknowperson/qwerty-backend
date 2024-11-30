@@ -1,58 +1,51 @@
-import json
+import logging
+
 from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse
-import asyncio
-import aiohttp
+
+from rag.pipeline import stream_model_response
 
 app = FastAPI()
 
+
+logging.basicConfig(level=logging.DEBUG)
+
+
 @app.post("/query")
 async def query(request: Request):
-    data = await request.json()
-    user_input = data.get("messages")[0].get("content")
-    api_url = "http://37.194.195.213:35411/v1/chat/completions"
-    headers = {
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "model": "saiga",
-        "messages": [
-            {
-                "role": "user",
-                "content": user_input
-            }
-        ],
-        "stream": True,
-        "max_tokens": data.get("max_tokens", 100)
-    }
+    try:
+        data = await request.json()
+        user_input = data.get("messages")[0].get("content")
 
-    async def stream_response():
-        async with aiohttp.ClientSession() as session:
-            async with session.post(api_url, headers=headers, json=payload) as response:
-                if response.status == 200:
-                    async for line in response.content:
-                        if line.startswith(b"data:") and line != b'\r\n':
-                            decoded_line = line.decode('utf-8')
-                            yield decoded_line
-                            # await asyncio.sleep(0)  # Allow other tasks to run
-                else:
-                    yield f"data: Error: {response.status}\n\n"
+        logging.debug(f"Received input: {user_input}")
 
-    return StreamingResponse(
-        stream_response(),
-        media_type="text/event-stream",
-        headers={
-            "Cache-Control": "no-cache",
-            "Connection": "keep-alive",
-            "Transfer-Encoding": "chunked",
-        }
-    )
+        async def stream_response():
+            try:
+                logging.debug("Starting stream response")
+                async for token in stream_model_response(user_input):
+                    logging.debug(f"Yielding token: {token}")
+                    yield f"data: {token}\n\n"
+                logging.debug("Finished streaming tokens")
+                yield "data: [DONE]\n\n"
+            except Exception as e:
+                logging.error(f"Error in stream_response: {e}")
+                yield f"data: Error: {str(e)}\n\n"
 
-if __name__ == '__main__':
+        return StreamingResponse(
+            stream_response(),
+            media_type="text/event-stream",
+            headers={
+                "Cache-Control": "no-cache",
+                "Connection": "keep-alive",
+                "Transfer-Encoding": "chunked",
+            },
+        )
+    except Exception as e:
+        logging.error(f"Error in query endpoint: {e}")
+        return {"error": str(e)}
+
+
+if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=8001,
-        loop="asyncio"
-    )
+
+    uvicorn.run(app, host="0.0.0.0", port=8001, loop="asyncio")

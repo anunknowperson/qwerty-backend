@@ -1,3 +1,5 @@
+import logging
+
 from langchain_core.documents import Document
 from langgraph.graph import START, MessagesState, StateGraph
 
@@ -13,7 +15,11 @@ class State(MessagesState):
 
 
 def retrieve(state: State):
-    retrieved_docs = vector_store.similarity_search(state["question"])
+    retrieved_docs = vector_store.similarity_search(state["question"], k=10)
+
+    logging.info(f"Retrieved {len(retrieved_docs)} documents")
+    logging.info("".join(f"{i}: {doc.page_content}\n" for i, doc in enumerate(retrieved_docs)))
+
     return {"context": retrieved_docs}
 
 

@@ -1,272 +1,37 @@
-Как выбрать роддом
-(function(w, d) {var v = w.frameCacheVars = {'CACHE_MODE':'HTMLCACHE','storageBlocks':[],'dynamicBlocks':{'futOptionsFrame':'d14096820a0e','futOptionsMenuFrame':'14f52a734f1e','pdDynamicBanner':'d41d8cd98f00'},'AUTO_UPDATE':true,'AUTO_UPDATE_TTL':'0','version':'2'};var inv = false;if (v.AUTO_UPDATE === false){if (v.AUTO_UPDATE_TTL && v.AUTO_UPDATE_TTL > 0){var lm = Date.parse(d.lastModified);if (!isNaN(lm)){var td = new Date().getTime();if ((lm + v.AUTO_UPDATE_TTL * 1000) >= td){w.frameRequestStart = false;w.preventAutoUpdate = true;return;}inv = true;}}else{w.frameRequestStart = false;w.preventAutoUpdate = true;return;}}var r = w.XMLHttpRequest ? new XMLHttpRequest() : (w.ActiveXObject ? new w.ActiveXObject("Microsoft.XMLHTTP") : null);if (!r) { return; }w.frameRequestStart = true;var m = v.CACHE_MODE; var l = w.location; var x = new Date().getTime();var q = "?bxrand=" + x + (l.search.length > 0 ? "&" + l.search.substring(1) : "");var u = l.protocol + "//" + l.host + l.pathname + q;r.open("GET", u, true);r.setRequestHeader("BX-ACTION-TYPE", "get_dynamic");r.setRequestHeader("X-Bitrix-Composite", "get_dynamic");r.setRequestHeader("BX-CACHE-MODE", m);r.setRequestHeader("BX-CACHE-BLOCKS", v.dynamicBlocks ? JSON.stringify(v.dynamicBlocks) : "");if (inv){r.setRequestHeader("BX-INVALIDATE-CACHE", "Y");}try { r.setRequestHeader("BX-REF", d.referrer || "");} catch(e) {}if (m === "APPCACHE"){r.setRequestHeader("BX-APPCACHE-PARAMS", JSON.stringify(v.PARAMS));r.setRequestHeader("BX-APPCACHE-URL", v.PAGE_URL ? v.PAGE_URL : "");}r.onreadystatechange = function() {if (r.readyState != 4) { return; }var a = r.getResponseHeader("BX-RAND");var b = w.BX && w.BX.frameCache ? w.BX.frameCache : false;if (a != x || !((r.status >= 200 && r.status < 300) || r.status === 304 || r.status === 1223 || r.status === 0)){var f = {error:true, reason:a!=x?"bad_rand":"bad_status", url:u, xhr:r, status:r.status};if (w.BX && w.BX.ready && b){BX.ready(function() {setTimeout(function(){BX.onCustomEvent("onFrameDataRequestFail", [f]);}, 0);});}w.frameRequestFail = f;return;}if (b){b.onFrameDataReceived(r.responseText);if (!w.frameUpdateInvoked){b.update(false);}w.frameUpdateInvoked = true;}else{w.frameDataString = r.responseText;}};r.send();var p = w.performance;if (p && p.addEventListener && p.getEntries && p.setResourceTimingBufferSize){var e = 'resourcetimingbufferfull';var h = function() {if (w.BX && w.BX.frameCache && w.BX.frameCache.frameDataInserted){p.removeEventListener(e, h);}else {p.setResourceTimingBufferSize(p.getEntries().length + 50);}};p.addEventListener(e, h);}})(window, document);
-if(!window.BX)window.BX={};if(!window.BX.message)window.BX.message=function(mess){if(typeof mess==='object'){for(let i in mess) {BX.message[i]=mess[i];} return true;}};
-(window.BX||top.BX).message({'JS_CORE_LOADING':'Загрузка...','JS_CORE_NO_DATA':'- Нет данных -','JS_CORE_WINDOW_CLOSE':'Закрыть','JS_CORE_WINDOW_EXPAND':'Развернуть','JS_CORE_WINDOW_NARROW':'Свернуть в окно','JS_CORE_WINDOW_SAVE':'Сохранить','JS_CORE_WINDOW_CANCEL':'Отменить','JS_CORE_WINDOW_CONTINUE':'Продолжить','JS_CORE_H':'ч','JS_CORE_M':'м','JS_CORE_S':'с','JSADM_AI_HIDE_EXTRA':'Скрыть лишние','JSADM_AI_ALL_NOTIF':'Показать все','JSADM_AUTH_REQ':'Требуется авторизация!','JS_CORE_WINDOW_AUTH':'Войти','JS_CORE_IMAGE_FULL':'Полный размер'});
-BX.setJSList(['/bitrix/js/main/core/core_ajax.js','/bitrix/js/main/core/core_promise.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/loadext/loadext.js','/bitrix/js/main/loadext/extension.js','/bitrix/js/main/polyfill/promise/js/promise.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/includes/js/includes.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/ui/polyfill/closest/js/closest.js','/bitrix/js/main/polyfill/fill/main.polyfill.fill.js','/bitrix/js/main/polyfill/find/js/find.js','/bitrix/js/main/polyfill/matches/js/matches.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/core/core.js','/bitrix/js/main/polyfill/intersectionobserver/js/intersectionobserver.js','/bitrix/js/main/lazyload/dist/lazyload.bundle.js','/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js','/bitrix/js/main/parambag/dist/parambag.bundle.js']);
-(window.BX||top.BX).message({'LANGUAGE_ID':'ru','FORMAT_DATE':'DD.MM.YYYY','FORMAT_DATETIME':'DD.MM.YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'10800','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/'});
-BX.setJSList(['/bitrix/js/main/core/core_fx.js','/bitrix/js/main/pageobject/pageobject.js','/bitrix/js/main/core/core_window.js','/bitrix/js/main/date/main.date.js','/bitrix/js/main/core/core_date.js','/bitrix/js/main/utils.js','/local/assets/V3/js/fixSession.js']);
-var ALXerrorSendMessages={
-                'head':'Найденная Вами ошибка в тексте',
-                'footer':'<b>Послать сообщение об ошибке автору?</b><br/><span style="font-size:10px;color:#7d7d7d">(ваш браузер останется на той же странице)</span>',
-                'comment':'Комментарий для автора (необязательно)',
-                'TitleForm':'Сообщение об ошибке',
-                'ButtonSend':'Отправить',
-                'LongText':'Вы выбрали слишком большой объем текста.',
-                'LongText2':'Попробуйте ещё раз.',
-                'cancel':'Отмена',
-                'senderror':'Ошибка отправки сообщения!',
-                'close':'Закрыть',
-                'text_ok':'Ваше сообщение отправлено.',
-                'text_ok2':'Спасибо за внимание!'
-            }
-var _ba = _ba || []; _ba.push(["aid", "98f24ef6aa6c077d92fb6294896edefc"]); _ba.push(["host", "gu.spb.ru"]); (function() {var ba = document.createElement("script"); ba.type = "text/javascript"; ba.async = true;ba.src = (document.location.protocol == "https:" ? "https://" : "http://") + "bitrix.info/ba.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ba, s);})();
-Для граждан
-Для бизнеса
-Для граждан
-Для граждан
-Для бизнеса
-Статус заявления
-Регистрация
-Меню
-Главная
-Услуги
-База знаний
-Оплата
-МФЦ
-Ведомства
-Поддержка
-Отображать
-Для граждан
-Для бизнеса
-Для граждан
-Для граждан
-Для бизнеса
-if (BX('Display_select-bar') && typeof selectFrameInit !== "undefined") {
-                                                selectFrameInit();
-                                            }
-Статус заявления
-Регистрация
-Закрыть
-Санкт-Петербург Госуслуги
-Услуги
-База знаний
-Оплата
-МФЦ
-Ведомства
-Поддержка
-Поиск
-Личный
-                            кабинет
-Для улучшения работы портала Комитет по информатизации и связи может собирать данные, используя файлы cookie и сервис "Яндекс Метрика". Это соответствует . Продолжая работу с сайтом, вы даёте . Файлы cookie можно отключить в настройках вашего браузера.
-Политике в отношении обработки персональных данных Комитета по информатизации и связи
-согласие на обработку персональных данных
-Понятно
-Согласие на обработку персональных данных
-Продолжая работу на Сайте я выражаю свое согласие Комитету по информатизации и связи (далее – Оператор) ИНН 7825457753, юридический адрес: 191060, город
-                                                Санкт-Петербург, Смольный проезд, д. 1 литера Б, на автоматизированную обработку моих персональных данных: данные из файлов cookie, IP-адрес, сведения, собираемые посредством метрических программ Яндекс.Метрика, с совершением действий: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, обезличивание, блокирование, удаление, уничтожение, передача (предоставление, доступ) партнёрам Оператора, предоставляющим сервис по указанным метрическим программам. Обработка персональных данных осуществляется в целях ведение статистики и анализа работы сайта: gu.spb.ru.
-Настоящее согласие действует с момента его предоставления и до момента его отзыва.
-В случае отказа от обработки персональных данных, я проинформирован(а) о необходимости прекратить использование сайта или отключить файлы cookie в настройках браузера и запретить сбор метрических данных, в том числе путем использования расширения для браузера «Блокировщик Яндекс.Метрики».
-Я предупрежден(а), что обработка моих персональных данных осуществляется
-                                                с соблюдением принципов и правил обработки персональных данных, предусмотренных Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».
-Согласие может быть досрочно отозвано путём подачи заявления в адрес Оператора
-Закрыть
-Закрыть
-Назад
-Главная
-База знаний
-Как выбрать роддом
-Как выбрать роддом
-Задумываться о выборе роддома многие женщины начинают задолго до родов.
-В этом материале вы найдёте информацию о том, на что стоит обратить внимание при выборе бесплатного или платного роддома.
-Роды по полису ОМС
-Роды по полису ОМС
-Подробности
-На 30-й неделе беременности (при многоплодной беременности — на 28-й) будущая мама получает родовой сертификат в женской консультации, в которой она состоит на учёте. Сертификат не только гарантирует ей оказание качественной медицинской помощи во время беременности, родов и после рождения малыша, но и закрепляет право выбора роддома. Вы можете выбрать любой государственный роддом по В день родов в приёмной нужно будет предъявить следующие документы:
-полису ОМС.
-Полис обязательного медицинского страхования.
-Закрыть
-полис ОМС;
-(без неё вас положат в инфекционное отделение);
-обменную карту
-Документ, содержащий сведения о течении беременности, заболеваниях матери и предполагаемом сроке родов.
-Закрыть
-паспорт;
-СНИЛС;
-родовой сертификат (необязательно).
-Роды примет дежурная бригада, а затем вас заселят в общую послеродовую палату.
-По полису ОМС вы , который будет принимать роды. Для этого напишите заявление на имя главного врача.
-можете поменять персонал
-Договорные роды
-Договорные роды
-Подробности
+## Как выбрать роддом
+
+Задумываться о выборе роддома многие женщины начинают задолго до родов. В этом материале вы найдёте информацию о том, на что стоит обратить внимание при выборе бесплатного или платного роддома.
+
+**Роды по полису ОМС**
+
+На 30-й неделе беременности (при многоплодной беременности — на 28-й) будущая мама получает родовой сертификат в женской консультации, в которой она состоит на учёте. Сертификат не только гарантирует ей оказание качественной медицинской помощи во время беременности, родов и после рождения малыша, но и закрепляет право выбора роддома. Вы можете выбрать любой государственный роддом по полису ОМС.
+
+В день родов в приёмной нужно будет предъявить следующие документы:
+
+* Полис обязательного медицинского страхования (без него вас положат в инфекционное отделение)
+* обменную карту (документ, содержащий сведения о течении беременности, заболеваниях матери и предполагаемом сроке родов)
+* паспорт
+* СНИЛС
+* родовой сертификат (необязательно)
+
+Роды примет дежурная бригада, а затем вас заселят в общую послеродовую палату. По полису ОМС вы можете поменять персонал, который будет принимать роды. Для этого напишите заявление на имя главного врача.
+
+**Договорные роды**
+
 В родильных домах и перинатальных центрах есть платные отделения. Стоимость родов будет зависеть от набора услуг, технологической оснащенности палаты, квалификации врачей (узнать подробнее можно на сайте родильного дома).
-Если для вас важны дополнительные услуги (обучение грудному вскармливанию, индивидуальная палата или улучшенное питание), можете выбрать частный родильный дом. На сегодня в Санкт-Петербурге их два, планируется открыть третий.
-Работающие женщины, имеющие от работодателя, могут выбрать медицинскую организацию, с которой у страховой есть договор, и рожать там бесплатно (если это предусмотрено программой страхования).
-полис ДМС
-Полис добровольного медицинского страхования.
-Закрыть
-Выбор роддома
-Выбор роддома
-Подробности
+
+Если для вас важны дополнительные услуги (обучение грудному вскармливанию, индивидуальная палата или улучшенное питание), можете выбрать частный родильный дом. 
+
+Работающие женщины, имеющие от работодателя полис ДМС, могут выбрать медицинскую организацию, с которой у страховой есть договор, и рожать там бесплатно (если это предусмотрено программой страхования).
+
+**Выбор роддома**
+
 Выбирая медицинскую организацию, имеет смысл:
-оценить её удаленность от дома (легко ли будет добраться туда в час пик?);
-навести справки о квалификации персонала и наличии современной аппаратуры, которая может понадобиться во время родов и после;
-учесть наличие у вас хронических заболеваний (если они есть — возможно, имеет смысл обратить внимание на специализированные медицинские организации);
-проверить, не закроется ли организация на дезинфекцию или ремонт в то время, когда у вас ожидаются роды (лучше заранее ознакомиться с графиком закрытия );
-на официальном сайте администрации Санкт-Петербурга
-прийти на день открытых дверей в интересующие вас организации (даты проведения таких дней роддома и перинатальные центры обычно заранее публикуют на официальных сайтах; некоторые из них также проводят виртуальные экскурсии).
-Кроме того, если вы планируете заключать договор на платные роды, помните о возможности наблюдаться и рожать у одного и того же врача. Если медицинская организация предлагает такую услугу, вы сможете, изучив отзывы, выбрать врача и познакомиться с ним заранее — это позволит установить психологический контакт и меньше волноваться во время родов.
-Портал госуслуг Санкт-Петербурга
-О портале
-Каталог услуг
-МФЦ Санкт-Петербурга
-Новости
-Оплата
-Законодательство
-Вопросы и ответы
-Регистрация
-Поддержка
-Досудебное обжалование
-База знаний
-Бланки документов
-Ведомства
-Скачайте приложение
-Портал в соцсетях
-Группа в ВКонтакте «Государственные услуги в Санкт-Петербурге»
-Канал в Telegram «Государственные услуги в Санкт-Петербурге»
-Страница в Одноклассниках «Государственные услуги в Санкт-Петербурге»
-МФЦ в соцсетях
-Группа в ВКонтакте «МФЦ»
-Канал в Telegram МФЦ Санкт-Петербурга (СПБ ГКУ "МФЦ")
-Задать вопрос по работе портала
-(812) 764-38-84
-support@gu.spb.ru
-Задать вопрос по работе МФЦ
-122
-(812) 246-5-122 (для звонков из других регионов)
-Портал «Государственные и муниципальные услуги (функции) в Санкт-Петербурге» © 2007–2024 Комитет по информатизации и связи
-Нашли ошибку? Выделите некорректный текст, нажмите Ctrl+Enter
-#bannerTopPD {
-                        transition: opacity 250ms ease 0s, visibility 250ms ease 0s;
-                    }
-                    .hide-pd {
-                        opacity: 0;
-                        visibility: hidden;
-                    }
-let bannerHtml = `
-                    <div id="bannerTopPD" class="hide-pd">
-                        <div class="line-temp line-usual box _mode-regular _option-notice back-brandDim cols-clear js-notice paragraph-base" id="pd_banner">
-	<div class="cols _indent-base _nowrap _media-w540-nowrap-cancel">
-		<div class="col-temp">
-			<svg class="icon-svg _size-usual color-brand" aria-hidden="true"><use xlink:href="/local/assets/V3/images/svg-icons.svg#icon-warning_circle"></use></svg>
-		</div>
-		<div class="col-temp col-12-w540 text-container">
-			<p>Для улучшения работы портала Комитет по информатизации и связи может собирать данные, используя файлы cookie и сервис "Яндекс Метрика". Это соответствует <a href="/politika-obrabotki-personalnykh-dannykh/" class="link-brand">Политике в отношении обработки персональных данных Комитета по информатизации и связи</a>. Продолжая работу с сайтом, вы даёте <a href="javascript:void(0);" class="link-brand" id="pd_popup">согласие на обработку персональных данных</a>. Файлы cookie можно отключить в настройках вашего браузера.</p>
-			<p>
-				<button class="button-reset button-base _size-common button_theme-brand_fill pd_agreement">Понятно</button>
-			</p>
-		</div>
-	</div>
-</div>                        <div class="popup" id="PD_text_popup" aria-hidden="true" role="dialog" aria-modal="true">
-                            <div class="popup-table">
-                                <div class="popup-cell">
-                                    <div class="popup-body _w-base">
-                                        <div class="popup-title title-regular">Согласие на обработку персональных данных</div>
-                                        <div class="line-base text-container paragraph-base color-base">
-                                            <p>Продолжая работу на Сайте я выражаю свое согласие Комитету по информатизации и связи (далее – Оператор) ИНН 7825457753, юридический адрес: 191060, город
-                                                Санкт-Петербург, Смольный проезд, д. 1 литера Б, на автоматизированную обработку моих персональных данных: данные из файлов cookie, IP-адрес, сведения, собираемые посредством метрических программ Яндекс.Метрика, с совершением действий: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, обезличивание, блокирование, удаление, уничтожение, передача (предоставление, доступ) партнёрам Оператора, предоставляющим сервис по указанным метрическим программам. Обработка персональных данных осуществляется в целях ведение статистики и анализа работы сайта: gu.spb.ru.</p>
-                                            <p>Настоящее согласие действует с момента его предоставления и до момента его отзыва.</p>
-                                            <p>В случае отказа от обработки персональных данных, я проинформирован(а) о необходимости прекратить использование сайта или отключить файлы cookie в настройках браузера и запретить сбор метрических данных, в том числе путем использования расширения для браузера «Блокировщик Яндекс.Метрики».</p>
-                                            <p>Я предупрежден(а), что обработка моих персональных данных осуществляется
-                                                с соблюдением принципов и правил обработки персональных данных, предусмотренных Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
-                                            <p>Согласие может быть досрочно отозвано путём подачи заявления в адрес Оператора</p>
-                                        </div>
-                                        <div class="line-regular line-adaptive_540-usual">
-                                            <button data-hystclose class="button-reset _block-w540 button-base _size-common button_theme-brand_fill">Закрыть</button>
-                                        </div>
-                                        <button data-hystclose class="button-reset button-icon _mode-round _size-special button_theme-hoarAverage_stroke popup-button__close">
-                                            <span class="visually-hidden">Закрыть</span>
-                                            <svg class="icon-svg _size-usual button-icon__content" aria-hidden="true"><use xlink:href="/local/assets/V3/images/svg-icons.svg#icon-cancel"></use></svg>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div data-hystclose class="popup-verlay"></div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
 
-                    document.addEventListener('DOMContentLoaded', () => {
-                        $('.w-main > .wrapper-base').prepend(bannerHtml);
-                        setTimeout(function () {
-                            $('#bannerTopPD').removeClass('hide-pd')
-                        }, 0);
-                        let date = new Date();
-                        date.setTime(date.getTime() + (180 * 60 * 1000));
-                        $('.pd_agreement').on('click', function () {
-                            $.cookie('PD_AGREE', 'Y', {
-                                domain: `${window.location.host}`,
-                                expires: date,
-                                path: '/'
-                            });
-                            $('#bannerTopPD').remove();
-                            $('#bannerTopPD-style').remove();
-                        });
-                        $('#pd_popup').on('click', function (e) {
-                            e.preventDefault();
-                            document.getElementById('PD_text_popup').style.overflowY = 'unset';
-                            popupInit.open('#PD_text_popup');
-                            document.getElementById('PD_text_popup').style.overflowY = 'auto';
-                            return false;
-                        });
-                    });
-document.addEventListener("DOMContentLoaded", (event) => {
-        Isaak.init({project_token: "fqV4RI9rxvY5MYJrQ8pLVudKOxFMI54", position: 'right_bottom'});
-    });
-let APP_ENV = 'production';
-    if (APP_ENV !== 'local') {
-        (function (d, w, c) {
-            (w[c] = w[c] || []).push(function () {
-                try {
-                    w.yaCounter9966853 = new Ya.Metrika({
-                        id: 9966853,
-                        clickmap: true,
-                        trackLinks: true,
-                        accurateTrackBounce: true
-                    });
-                } catch (e) {
-                }
-            });
+* оценить её удаленность от дома (легко ли будет добраться туда в час пик?)
+* навести справки о квалификации персонала и наличии современной аппаратуры, которая может понадобиться во время родов и после
+* учесть наличие у вас хронических заболеваний (если они есть — возможно, имеет смысл обратить внимание на специализированные медицинские организации)
+* проверить, не закроется ли организация на дезинфекцию или ремонт в то время, когда у вас ожидаются роды (лучше заранее ознакомиться с графиком закрытия на официальном сайте администрации Санкт-Петербурга)
+* прийти на день открытых дверей в интересующие вас организации (даты проведения таких дней роддома и перинатальные центры обычно заранее публикуют на официальных сайтах; некоторые из них также проводят виртуальные экскурсии)
 
-            var n = d.getElementsByTagName("script")[0],
-                x = "https://mc.yandex.ru/metrika/watch.js",
-                s = d.createElement("script"),
-                f = function () {
-                    n.parentNode.insertBefore(s, n);
-                };
-            for (var i = 0; i < document.scripts.length; i++) {
-                if (document.scripts[i].src === x) {
-                    return;
-                }
-            }
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = x;
-
-            if (w.opera == "[object Opera]") {
-                d.addEventListener("DOMContentLoaded", f, false);
-            } else {
-                f();
-            }
-        })(document, window, "yandex_metrika_callbacks");
-    }
-<div><img src="https://mc.yandex.ru/watch/9966853" style="position:absolute; left:-9999px;" alt=""/></div>
-Ваше сообщение отправлено.
-Спасибо за внимание!
-Закрыть
-Послать сообщение об ошибке автору?
-(ваш браузер останется на той же странице)
-Найденная Вами ошибка в тексте:
-Комментарий для автора (необязательно):
-Отправить
-Отмена
+Кроме того, если вы планируете заключать договор на платные роды, помните о возможности наблюдаться и рожать у одного и того же врача. Если медицинская организация предлагает такую услугу, вы сможете, изучив отзывы, выбрать врача и познакомиться с ним заранее — это позволит установить психологический контакт и меньше волноваться во время родов.

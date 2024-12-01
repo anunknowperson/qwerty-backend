@@ -1,0 +1,3 @@
+CREATE DATABASE contacts;
+CREATE DATABASE knowledge;
+CREATE DATABASE gov;

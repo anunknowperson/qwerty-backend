@@ -5,9 +5,8 @@ services:
     ports:
      - 5432:5432
     environment:
-      - POSTGRES_DB=langchain
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
       - POSTGRES_HOST_AUTH_METHOD=trust
-    # volumes:
-    #  - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+     - ./init.sql:/docker-entrypoint-initdb.d/init.sql

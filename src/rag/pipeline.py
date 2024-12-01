@@ -1,4 +1,5 @@
 import logging
+from typing import Literal
 
 from langchain_core.documents import Document
 from langchain_core.messages import BaseMessage, SystemMessage
@@ -10,13 +11,42 @@ from rag.vector_store import vector_store
 
 class State(MessagesState):
     question: str
+    theme: Literal["knowledge", "gov", "contacts", "none"]
     context: list[Document]
     answer: str
 
 
-def retrieve(state: State):
+def get_theme(state: State):
+    system_message_content = (
+        "Прочитай следующий запрос."
+        "Выбери, к какой теме из нижеперечисленных он относится."
+        "Твой ответ должен содержать единственное число - номер пункта."
+        "Список тем:"
+        "1. Поиск контактов и номеров телефонов, основанный на Базе Контактов Санкт-Петербурга. "
+        "При любом упоминании контактов или номеров всегда отвечай этой темой."
+        "2. Поиск релевантной информации, ответ на вопрос основанный на Базе Знаний Санкт-Петербурга."
+        "3. Поиск информации на сайте администрации Санкт-Петербурга"
+        "4. Ни одна из вышеперечисленных тем."
+    )
 
-    retrieved_docs = vector_store.similarity_search(state["messages"][-1].content, k=10)
+    logging.info(f"Message: {state["messages"][-1]}")
+    prompt = [SystemMessage(system_message_content), state["messages"][-1]]
+    response = model.invoke(prompt)
+    logging.info(f"get_theme response: {response.content}")
+    if "1" in response.content:
+        return {"theme": "contacts"}
+
+    if "2" in response.content:
+        return {"theme": "knowledge"}
+
+    if "3" in response.content:
+        return {"theme": "gov"}
+
+    return {"theme": "none"}
+
+
+def retrieve(state: State):
+    retrieved_docs = vector_store.similarity_search(state["messages"][-1].content, k=6, theme=state["theme"])
     logging.info(f"Retrieved {len(retrieved_docs)} documents")
     logging.info("".join(f"{i}: {doc.page_content}\n" for i, doc in enumerate(retrieved_docs)))
 
@@ -43,8 +73,8 @@ def generate(state: State):
     return {"answer": response.content}
 
 
-graph_builder = StateGraph(State).add_sequence([retrieve, generate])
-graph_builder.add_edge(START, "retrieve")
+graph_builder = StateGraph(State).add_sequence([get_theme, retrieve, generate])
+graph_builder.add_edge(START, "get_theme")
 graph = graph_builder.compile()
 
 

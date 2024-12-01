@@ -1,18 +1,4 @@
-# Для Григория
+# Другие репозитории:
 
-- Сначала поставить все зависимости
-    ```
-    poetry install
-    ```
-
-- Установить `pre-commit` хуки:
-    ```
-    poetry run pre-commit install
-    ```
-
-- Добавлять зависимости через
-    ```
-    poetry add <dep-name>
-    ```
-
-- Команды для линта можешь в CI посмотреть
+- [Фронтенд](https://github.com/anunknowperson/qwerty-frontend)
+- [Телеграм бот](https://github.com/Fra1sse/qwerty-telegram)
